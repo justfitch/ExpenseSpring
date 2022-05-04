@@ -69,7 +69,7 @@ public class EmployeeServiceImpl implements EmployeeService{
         Optional<Employee> oe = employeeRepo.findById(id);
         if (oe.isPresent()) {
             List<Expense> expenses = this.expenseRepo.findExpensesByEmployeeId(id);
-            if(expenses != null){
+            if(!expenses.isEmpty()){
                 return "Sorry, employees with posted expense reports cannot be deleted";
             } else {
                 employeeRepo.deleteById(id);
